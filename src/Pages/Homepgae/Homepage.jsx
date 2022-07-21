@@ -5,7 +5,6 @@ import MovieShowing from './MovieShowing'
 const HomePage = () => {
   return (
     <div>
-      <Banner />
       {/* <MovieShowing /> */}
     </div>
   )

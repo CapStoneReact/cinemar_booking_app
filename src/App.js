@@ -2,12 +2,14 @@ import React, { lazy, Suspense } from 'react';
 // import ErrorBoundary from './Components/ErrorBoudary/ErrorBoudary';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import HomeTemplate from './Templates/HomeTemplate';
-
+import LoadingPage from './Components/LoadingPage/LoadingPage';
 
 const HomePage = lazy(() => import('./Pages/Homepgae/Homepage.jsx'))
-const Contact = lazy(() => import('./Pages/Contact/Contact'))
-const Login = lazy(() => import('./Pages/Login/Login'));
-const About = lazy(() => import('./Pages/About/About'));
+// const Contact = lazy(() => import('./Pages/Contact/Contact'))
+// const Login = lazy(() => import('./Pages/Login/Login'));
+// const About = lazy(() => import('./Pages/About/About'));
+
+
 // const GlobalStyle = lazy(() => import('./GlobalStyle'));
 // const Register = lazy(() => import('Pages/Register/Register'));
 // const Checkout = lazy(() => import('Pages/Checkout/Checkout'));
@@ -17,7 +19,7 @@ const About = lazy(() => import('./Pages/About/About'));
 function App() {
   return (
     // <ErrorBoundary>
-    <Suspense fallback={<h1>Loading ....</h1>}>
+    <Suspense fallback={<LoadingPage />}>
       <BrowserRouter>
         <Routes>
           <Route path='' element={<HomeTemplate />}>
