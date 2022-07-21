@@ -5,7 +5,7 @@ Dự án được xây dựng từ React library.
 
 ### Tham khảo
 
-Dự án có tham khảo luồng và giao diện của trang [Boleto](https://boleto.vercel.app/##).
+Dự án có tham khảo luồng và giao diện của trang [TixMovie](https://tcdtist-tix-clone.vercel.app/).
 
 ### Mô tả dự án
 
