@@ -1,5 +1,5 @@
 import axios from "axios";
-import store from "../configStore";
+// import store from "../configStore";
 
 const axiosClient = axios.create({
     baseURL: "https://movienew.cybersoft.edu.vn/api/",
@@ -9,25 +9,25 @@ const axiosClient = axios.create({
     },
 });
 
-axiosClient.interceptors.request.use(
-    (config) => {
-        if (config.headers) {
-            const { accessToken = "" } = store.getState().auth.user || {}
-            if (accessToken) {
-                config.headers.Authorization = `Bearer ${accessToken}`
-            }
-        }
-        return config;
-    }
+// Add a request interceptor
+axiosClient.interceptors.request.use(function (config) {
+    // Do something before request is sent
+    return config;
+}, function (error) {
+    // Do something with request error
+    return Promise.reject(error);
+});
 
-)
-axiosClient.interceptors.response.use(
-    (respone) => {
-        return respone.data.content;
-    },
-    (error) => {
-        return error.response.data.content;
-    }
+// Add a response interceptor
+axiosClient.interceptors.response.use(function (response) {
+    // Any status code that lie within the range of 2xx cause this function to trigger
+    // Do something with response data
+    console.log(response)
+    return response.data.content;
+}, function (error) {
+    // Any status codes that falls outside the range of 2xx cause this function to trigger
+    // Do something with response error
+    return Promise.reject(error);
+});
 
-)
 export default axiosClient;

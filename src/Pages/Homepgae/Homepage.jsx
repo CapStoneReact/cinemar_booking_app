@@ -1,13 +1,11 @@
-import Banner from './Banner'
-import MovieShowing from './MovieShowing'
-
+import MovieShowing from "./MovieShowing";
 
 const HomePage = () => {
   return (
     <div>
-      {/* <MovieShowing /> */}
+      <MovieShowing />
     </div>
-  )
-}
+  );
+};
 
-export default HomePage
+export default HomePage;
