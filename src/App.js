@@ -6,7 +6,7 @@ import LoadingPage from './Components/LoadingPage/LoadingPage';
 
 const HomePage = lazy(() => import('./Pages/Homepgae/Homepage.jsx'))
 // const Contact = lazy(() => import('./Pages/Contact/Contact'))
-// const Login = lazy(() => import('./Pages/Login/Login'));
+const Login = lazy(() => import('./Pages/Login/Login'));
 // const About = lazy(() => import('./Pages/About/About'));
 
 
@@ -23,8 +23,8 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path='' element={<HomeTemplate />}>
-            {/* <Route path='contact' element={<Contact />}></Route>
-            <Route path='login' element={<Login />}></Route> */}
+            {/* <Route path='contact' element={<Contact />}></Route> */}
+            <Route path='login' element={<Login />}></Route>
             {/* <Route path='Register' element={<Register />}></Route> */}
             {/* <Route path='about' element={<About />}></Route> */}
             {/* <Route path='checkout' element={
