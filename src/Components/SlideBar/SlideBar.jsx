@@ -40,7 +40,7 @@ export default function SlideBar() {
       maPhim: "001",
       hinhAnh:
         "https://movienew.cybersoft.edu.vn/hinhanh/cuoc-chien-sinh-tu.png",
-      trailer: "https://www.youtube.com/embed/sx1ROHCmY-4",
+      trailer: "https://www.youtube.com/embed/Eu9G8nO5-Ug",
     },
     {
       maPhim: "002",
