@@ -5,19 +5,18 @@ import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
 import "./style.css";
 import HighlightOffOutlinedIcon from "@material-ui/icons/HighlightOffOutlined";
+const useStyles = makeStyles(() => ({
+  modal: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  paper: {
+    backgroundColor: "transparent",
+  },
+}));
 
 export default function SlideBar() {
-  const useStyles = makeStyles(() => ({
-    modal: {
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-    },
-    paper: {
-      backgroundColor: "transparent",
-    },
-  }));
-
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
 
@@ -64,13 +63,13 @@ export default function SlideBar() {
         >
           <img src={slider.hinhAnh} className="d-block w-100" alt="..." />
           <div className="carousel-caption">
-            {/* <button
+            <button
               className="play-trailer"
               type="button"
               onClick={() => handleOpen(slider.maPhim)}
             >
               <i className="fa fa-play"></i>
-            </button> */}
+            </button>
             <Modal
               aria-labelledby="transition-modal-title"
               aria-describedby="transition-modal-description"
