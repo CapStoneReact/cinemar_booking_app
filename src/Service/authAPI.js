@@ -1,17 +1,8 @@
 import axiosClient from "./axiosClient";
 
 const authAPI = {
-    // getMovieShowing: () => {
-    //     return axiosClient.get("QuanLyPhim/LayDanhSachPhim");
-    // },
-    loginAction: (loginState) => {
-        return axiosClient.post("/QuanLyNguoiDung/DangNhap"),
-        {
-            params: {
-                taiKhoan: loginState.taiKhoan,
-                matKhau: loginState.matKhau,
-            },
-        }
+    loginAction: (data) => {
+        return axiosClient.post("/QuanLyNguoiDung/DangNhap", data)
     },
     addMovie: (movie) => {
         const formData = new FormData();

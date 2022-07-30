@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -11,7 +11,7 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import LoadingPage from "../../Components/LoadingPage/LoadingPage";
 import { loginAction } from "../../Slices/auth";
 
@@ -65,31 +65,18 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Login(props) {
+    let navigate = useNavigate();
     const classes = useStyles();
     const [state, setState] = useState({
         taiKhoan: "",
         matKhau: "",
     });
-    const [render, setRender] = useState(false);
     const [isDisable, setIsDisable] = useState(true);
     const [emptyUsernameNotice, setEmptyUsernameNotice] = useState(false);
     const [emptyPasswordNotice, setEmptyPasswordNotice] = useState(false);
     const dispatch = useDispatch();
     const logo = process.env.PUBLIC_URL + "images/logo.png";
     const { user, isLoading, error } = useSelector((state) => state.auth);
-    console.log(user)
-
-
-    // const location = useLocation();
-
-    // useEffect(() => {
-    //     setTimeout(handleReset, 2000);
-    //     setState({
-    //         taiKhoan: "",
-    //         matKhau: "",
-    //     });
-    //     // eslint-disable-next-line
-    // }, [render]);
     const handleChange = (e) => {
         const name = e.target.name;
         const value = e.target.value;
@@ -114,7 +101,7 @@ export default function Login(props) {
     const handleLogin = (e) => {
         e.preventDefault();
         dispatch(loginAction(state));
-        setRender(!render);
+
     };
     const handleValidationAccount = () => {
         if (state.taiKhoan === "") {
@@ -131,31 +118,34 @@ export default function Login(props) {
     // const handleReset = () => {
     //     dispatch(resetAuth());
     // };
-    // const renderNotice = () => {
-    //     if (error) return <Alert severity="error">{error.response.data}</Alert>;
-    //     if (emptyUsernameNotice) {
-    //         setTimeout(handleNotice, 1500);
-    //         return <Alert severity="error">Tài khoản không được để trống</Alert>;
-    //     }
-    //     if (emptyPasswordNotice) {
-    //         setTimeout(handleNotice, 1500);
-    //         return <Alert severity="error">Mật khẩu không được để trống</Alert>;
-    //     }
-    // };
-    // if (isLoading)
-    //     return (
-    //         <div className={classes.root}>
-    //             <LoadingPage />
-    //         </div>
-    //     );
-    // if (user) {
-    //     if (user.maLoaiNguoiDung === "QuanTri") {
-    //         props.history.replace("/dashboard");
-    //     }
-    //     else {
-    //         props.history.replace("/");
-    //     }
-    // }
+    const renderNotice = () => {
+        if (error != null) {
+            return <Alert severity="error">{error}</Alert>;
+        }
+        if (emptyUsernameNotice) {
+            setTimeout(handleNotice, 1500);
+            return <Alert severity="error">Tài khoản không được để trống</Alert>;
+        }
+        if (emptyPasswordNotice) {
+            setTimeout(handleNotice, 1500);
+            return <Alert severity="error">Mật khẩu không được để trống</Alert>;
+        }
+    };
+    if (isLoading)
+        return (
+            <div className={classes.root}>
+
+                <LoadingPage />
+            </div>
+        );
+    if (user) {
+        if (user.maLoaiNguoiDung === "QuanTri") {
+            navigate("/dashboard");
+        }
+        else {
+            navigate("/");
+        }
+    }
     return (
         <Container component="main" maxWidth="xs">
             <CssBaseline />
@@ -166,7 +156,7 @@ export default function Login(props) {
                 <Typography component="h1" variant="h5">
                     Đăng Nhập
                 </Typography>
-                {/* {renderNotice()} */}
+                {renderNotice()}
                 <form
                     onSubmit={handleLogin}
                     className={classes.form} noValidate>

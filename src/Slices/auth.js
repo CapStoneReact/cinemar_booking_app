@@ -2,24 +2,18 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import authAPI from "../Service/authAPI";
 
 const initialState = {
-    user: {
-        takKhoan: "",
-        email: "",
-        accessToken: ""
-
-    },
+    user: null,
     isLoading: false,
     error: null,
-    // user: JSON.parse(localStorage.getItem("user")) || null
 }
 export const loginAction = createAsyncThunk(
     "auth/login",
     async (values) => {
         try {
             const data = await authAPI.loginAction(values)
-            // const data = { name: "AAAA" }
             //lưu thông in user xuống local storage
             localStorage.setItem("user", JSON.stringify(data))
+            console.log(data)
             return data
         }
         catch (e) {
