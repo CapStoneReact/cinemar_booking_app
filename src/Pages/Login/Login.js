@@ -11,9 +11,9 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import { useDispatch, useSelector } from "react-redux";
-// import { fetchLogin, resetAuth } from "./modules/action";
 import { NavLink, useLocation } from "react-router-dom";
 import LoadingPage from "../../Components/LoadingPage/LoadingPage";
+import { loginAction } from "../../Slices/auth";
 
 function Copyright() {
     return (
@@ -66,21 +66,22 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Login(props) {
     const classes = useStyles();
+    const [state, setState] = useState({
+        taiKhoan: "",
+        matKhau: "",
+    });
+    const [render, setRender] = useState(false);
+    const [isDisable, setIsDisable] = useState(true);
+    const [emptyUsernameNotice, setEmptyUsernameNotice] = useState(false);
+    const [emptyPasswordNotice, setEmptyPasswordNotice] = useState(false);
     const dispatch = useDispatch();
     const logo = process.env.PUBLIC_URL + "images/logo.png";
-    // const data = useSelector((state) => state.authReducer.data);
-    // const loading = useSelector((state) => state.authReducer.loading);
-    // const err = useSelector((state) => state.authReducer.err);
-    // const [render, setRender] = useState(false);
-    // const [isDisable, setIsDisable] = useState(true);
-    // const [emptyUsernameNotice, setEmptyUsernameNotice] = useState(false);
-    // const [emptyPasswordNotice, setEmptyPasswordNotice] = useState(false);
+    const { user, isLoading, error } = useSelector((state) => state.auth);
+    console.log(user)
+
+
     // const location = useLocation();
-    // const [state, setState] = useState({
-    //     taiKhoan: "",
-    //     matKhau: "",
-    // });
-    // //console.log();
+
     // useEffect(() => {
     //     setTimeout(handleReset, 2000);
     //     setState({
@@ -89,49 +90,49 @@ export default function Login(props) {
     //     });
     //     // eslint-disable-next-line
     // }, [render]);
-    // const handleChange = (e) => {
-    //     const name = e.target.name;
-    //     const value = e.target.value;
-    //     setState({
-    //         ...state,
-    //         [name]: value,
-    //     });
-    //     if (state.taiKhoan !== "") {
-    //         setEmptyUsernameNotice(false);
-    //     }
-    //     if (state.matKhau !== "") {
-    //         setEmptyPasswordNotice(false);
-    //     }
-    //     if (state.taiKhoan !== "" && state.matKhau !== "") {
-    //         setIsDisable(false);
-    //     }
-    // };
-    // const handleNotice = () => {
-    //     setEmptyUsernameNotice(false);
-    //     setEmptyPasswordNotice(false);
-    // };
-    // const handleLogin = (e) => {
-    //     e.preventDefault();
-    //     dispatch(fetchLogin(state, props.history));
-    //     setRender(!render);
-    // };
-    // const handleValidationAccount = () => {
-    //     if (state.taiKhoan === "") {
-    //         setEmptyUsernameNotice(true);
-    //         setIsDisable(true);
-    //     }
-    // };
-    // const handleValidationPassword = () => {
-    //     if (state.matKhau === "") {
-    //         setEmptyPasswordNotice(true);
-    //         setIsDisable(true);
-    //     }
-    // };
+    const handleChange = (e) => {
+        const name = e.target.name;
+        const value = e.target.value;
+        setState({
+            ...state,
+            [name]: value,
+        });
+        if (state.taiKhoan !== "") {
+            setEmptyUsernameNotice(false);
+        }
+        if (state.matKhau !== "") {
+            setEmptyPasswordNotice(false);
+        }
+        if (state.taiKhoan !== "" && state.matKhau !== "") {
+            setIsDisable(false);
+        }
+    };
+    const handleNotice = () => {
+        setEmptyUsernameNotice(false);
+        setEmptyPasswordNotice(false);
+    };
+    const handleLogin = (e) => {
+        e.preventDefault();
+        dispatch(loginAction(state));
+        setRender(!render);
+    };
+    const handleValidationAccount = () => {
+        if (state.taiKhoan === "") {
+            setEmptyUsernameNotice(true);
+            setIsDisable(true);
+        }
+    };
+    const handleValidationPassword = () => {
+        if (state.matKhau === "") {
+            setEmptyPasswordNotice(true);
+            setIsDisable(true);
+        }
+    };
     // const handleReset = () => {
     //     dispatch(resetAuth());
     // };
     // const renderNotice = () => {
-    //     if (err) return <Alert severity="error">{err.response.data}</Alert>;
+    //     if (error) return <Alert severity="error">{error.response.data}</Alert>;
     //     if (emptyUsernameNotice) {
     //         setTimeout(handleNotice, 1500);
     //         return <Alert severity="error">Tài khoản không được để trống</Alert>;
@@ -141,18 +142,17 @@ export default function Login(props) {
     //         return <Alert severity="error">Mật khẩu không được để trống</Alert>;
     //     }
     // };
-    // if (loading)
+    // if (isLoading)
     //     return (
     //         <div className={classes.root}>
     //             <LoadingPage />
     //         </div>
     //     );
-    // if (data) {
-    //     if (data.maLoaiNguoiDung === "QuanTri") {
+    // if (user) {
+    //     if (user.maLoaiNguoiDung === "QuanTri") {
     //         props.history.replace("/dashboard");
-    //     } else if (location?.state?.idSchedule) {
-    //         props.history.replace(`/bookticket/${location?.state?.idSchedule}`);
-    //     } else {
+    //     }
+    //     else {
     //         props.history.replace("/");
     //     }
     // }
@@ -168,7 +168,7 @@ export default function Login(props) {
                 </Typography>
                 {/* {renderNotice()} */}
                 <form
-                    // onSubmit={handleLogin} 
+                    onSubmit={handleLogin}
                     className={classes.form} noValidate>
                     <TextField
                         variant="outlined"
@@ -177,8 +177,8 @@ export default function Login(props) {
                         fullWidth
                         label="Tài Khoản"
                         name="taiKhoan"
-                    // onChange={handleChange}
-                    // onBlur={handleValidationAccount}
+                        onChange={handleChange}
+                        onBlur={handleValidationAccount}
                     />
                     <TextField
                         variant="outlined"
@@ -188,8 +188,8 @@ export default function Login(props) {
                         name="matKhau"
                         label="Mật Khẩu"
                         type="password"
-                    // onChange={handleChange}
-                    // onBlur={handleValidationPassword}
+                        onChange={handleChange}
+                        onBlur={handleValidationPassword}
                     />
                     <Button
                         type="submit"
@@ -197,7 +197,7 @@ export default function Login(props) {
                         variant="contained"
                         color="primary"
                         className={classes.submit}
-                    // disabled={isDisable}
+                        disabled={isDisable}
                     >
                         Đăng Nhập
                     </Button>
