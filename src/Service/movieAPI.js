@@ -1,8 +1,8 @@
 import axiosClient from "./axiosClient";
 
 const movieAPI = {
-    getMovieShowing: () => {
-        return axiosClient.get("QuanLyPhim/LayDanhSachPhim");
+    getMovieShowing: (groupName) => {
+        return axiosClient.get(`QuanLyPhim/LayDanhSachPhim?maNhom=${groupName}`);
     },
     getMovieDetails: (movieId) => {
         return axiosClient.get("QuanLyPhim/LayThongTinPhim"),

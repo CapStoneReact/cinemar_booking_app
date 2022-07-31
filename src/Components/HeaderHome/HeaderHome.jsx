@@ -29,12 +29,10 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function HeaderHome() {
-  console.log("render");
   // eslint-disable-next-line
   const [render, setRender] = useState(false);
 
   const user = JSON.parse(localStorage.getItem("user"));
-  console.log(user);
   const classes = useStyles();
   const [openLogout, setOpenLogout] = React.useState(false);
 

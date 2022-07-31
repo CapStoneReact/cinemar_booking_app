@@ -68,7 +68,6 @@ export default function Register() {
     const classes = useStyles();
     const dispatch = useDispatch();
     const { user, isLoading, error } = useSelector(state => state.auth)
-    console.log(user)
     const logo = process.env.PUBLIC_URL + "/images/logo.png";
     const [isValidPhoneNumber, setIsValidPhoneNumber] = useState(false);
     const [isDisable, setIsDisable] = useState(true);
