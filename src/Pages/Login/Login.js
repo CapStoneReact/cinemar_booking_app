@@ -119,8 +119,8 @@ export default function Login(props) {
     //     dispatch(resetAuth());
     // };
     const renderNotice = () => {
-        if (error != null) {
-            return <Alert severity="error">{error}</Alert>;
+        if (error) {
+            return <Alert severity="error">{error.message}</Alert>;
         }
         if (emptyUsernameNotice) {
             setTimeout(handleNotice, 1500);
