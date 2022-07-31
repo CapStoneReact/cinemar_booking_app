@@ -4,6 +4,9 @@ const authAPI = {
     loginAction: (data) => {
         return axiosClient.post("/QuanLyNguoiDung/DangNhap", data)
     },
+    registerAcion: (data) => {
+        return axiosClient.post("/QuanLyNguoiDung/DangKy", data)
+    },
     addMovie: (movie) => {
         const formData = new FormData();
         for (let key in movie) {

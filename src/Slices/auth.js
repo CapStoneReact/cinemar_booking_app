@@ -13,7 +13,22 @@ export const loginAction = createAsyncThunk(
             const data = await authAPI.loginAction(values)
             //lưu thông in user xuống local storage
             localStorage.setItem("user", JSON.stringify(data))
-            console.log(data)
+
+            return data
+        }
+        catch (e) {
+            throw e;
+        }
+
+    }
+)
+export const registerAction = createAsyncThunk(
+    "auth/register",
+    async (values) => {
+        try {
+            const data = await authAPI.registerAcion(values)
+            //lưu thông in user xuống local storage
+            localStorage.setItem("user", JSON.stringify(data))
             return data
         }
         catch (e) {
@@ -26,7 +41,13 @@ export const loginAction = createAsyncThunk(
 const authSlice = createSlice({
     name: "auth",
     initialState,
-    reducers: {},
+    reducers: {
+        resetAuth: (state) => {
+            state.user = null;
+            state.isLoading = false;
+            state.error = null;
+        }
+    },
     extraReducers: (builder) => {
         builder.addCase(loginAction.pending, (state) => {
             state.isLoading = true;
@@ -41,5 +62,6 @@ const authSlice = createSlice({
         })
     }
 })
+export const { resetAuth } = authSlice.actions;
 
 export default authSlice.reducer;

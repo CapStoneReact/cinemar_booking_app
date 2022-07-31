@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -13,7 +13,7 @@ import Container from "@material-ui/core/Container";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
 import LoadingPage from "../../Components/LoadingPage/LoadingPage";
-import { loginAction } from "../../Slices/auth";
+import { loginAction, resetAuth } from "../../Slices/auth";
 
 function Copyright() {
     return (
@@ -72,6 +72,7 @@ export default function Login(props) {
         matKhau: "",
     });
     const [isDisable, setIsDisable] = useState(true);
+    const [render, setRender] = useState(false);
     const [emptyUsernameNotice, setEmptyUsernameNotice] = useState(false);
     const [emptyPasswordNotice, setEmptyPasswordNotice] = useState(false);
     const dispatch = useDispatch();
@@ -94,6 +95,14 @@ export default function Login(props) {
             setIsDisable(false);
         }
     };
+    useEffect(() => {
+        setTimeout(handleReset, 2000);
+        setState({
+            taiKhoan: "",
+            matKhau: "",
+        });
+        // eslint-disable-next-line
+    }, [render]);
     const handleNotice = () => {
         setEmptyUsernameNotice(false);
         setEmptyPasswordNotice(false);
@@ -101,6 +110,7 @@ export default function Login(props) {
     const handleLogin = (e) => {
         e.preventDefault();
         dispatch(loginAction(state));
+        setRender(!render);
 
     };
     const handleValidationAccount = () => {
@@ -115,9 +125,9 @@ export default function Login(props) {
             setIsDisable(true);
         }
     };
-    // const handleReset = () => {
-    //     dispatch(resetAuth());
-    // };
+    const handleReset = () => {
+        dispatch(resetAuth());
+    };
     const renderNotice = () => {
         if (error) {
             return <Alert severity="error">{error.message}</Alert>;

@@ -9,12 +9,12 @@ import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-// import { registerUser, setResetRegister } from "./modules/action";
 import { Alert } from "@material-ui/lab";
 import "./style.css";
 import LoadingPage from "../../Components/LoadingPage/LoadingPage";
+import { registerAction, resetAuth } from "../../Slices/auth";
 function Copyright() {
     return (
         <Typography variant="body2" color="textSecondary" align="center">
@@ -64,15 +64,11 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Register() {
+    let navigate = useNavigate();
     const classes = useStyles();
     const dispatch = useDispatch();
-    // const registerErr = useSelector((state) => state.registerUserReducer.err);
-    // const registerSuccess = useSelector(
-    //     (state) => state.registerUserReducer.data
-    // );
-    // const registerLoading = useSelector(
-    //     (state) => state.registerUserReducer.loading
-    // );
+    const { user, isLoading, error } = useSelector(state => state.auth)
+    console.log(user)
     const logo = process.env.PUBLIC_URL + "/images/logo.png";
     const [isValidPhoneNumber, setIsValidPhoneNumber] = useState(false);
     const [isDisable, setIsDisable] = useState(true);
@@ -98,9 +94,9 @@ export default function Register() {
         setIsEmailFormatNotice(false);
         setEmptyFullNameNotice(false);
     };
-    // const handleResetReducer = () => {
-    //     dispatch(setResetRegister());
-    // };
+    const handleResetReducer = () => {
+        dispatch(resetAuth());
+    };
     const handleChangeRegister = (e) => {
         const name = e.target.name;
         const value = e.target.value;
@@ -138,9 +134,9 @@ export default function Register() {
             setIsDisable(true);
         }
     };
-    // if (registerErr) {
-    //     setTimeout(handleResetReducer, 2000);
-    // }
+    if (error) {
+        setTimeout(handleResetReducer, 2000);
+    }
     const handleValidationEmptyUserName = () => {
         if (registerUserItem.taiKhoan === "") {
             setEmptyUsernameNotice(true);
@@ -214,11 +210,13 @@ export default function Register() {
             return <Alert severity="error">Không đúng định dạng email</Alert>;
         }
     };
-    // const handleRegisterUser = (e) => {
-    //     e.preventDefault();
-    //     dispatch(registerUser(registerUserItem));
-    // };
-    // if (registerSuccess) {
+    const handleRegisterUser = (e) => {
+        e.preventDefault();
+        dispatch(registerAction(registerUserItem));
+        navigate("/");
+    };
+    // if (user) {
+    //     console.log("có chạy nha")
     //     return (
     //         <div id="card" className="animated fadeIn">
     //             <div id="upper-side">
@@ -245,13 +243,13 @@ export default function Register() {
     //         </div>
     //     );
     // }
-    // if (registerLoading) {
-    //     return (
-    //         <div className={classes.root}>
-    //             <Loading />
-    //         </div>
-    //     );
-    // }
+    if (isLoading) {
+        return (
+            <div className={classes.root}>
+                <LoadingPage />
+            </div>
+        );
+    }
     return (
         <Fragment>
             <div className={classes.bgRoot}>
@@ -264,15 +262,15 @@ export default function Register() {
                         <Typography component="h1" variant="h5">
                             Sign up
                         </Typography>
-                        {/* {registerErr ? (
-                            <Alert severity="error">{registerErr?.response.data}</Alert>
+                        {error ? (
+                            <Alert severity="error">{error}</Alert>
                         ) : (
                             ""
-                        )} */}
+                        )}
                         {handleValidationNotice()}
                         <form
                             className={classes.form}
-                            // onSubmit={handleRegisterUser}
+                            onSubmit={handleRegisterUser}
                             noValidate
                         >
                             <Grid container spacing={2}>

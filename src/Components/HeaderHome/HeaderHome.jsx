@@ -9,29 +9,32 @@ import Fade from "@material-ui/core/Fade";
 import CheckRoundedIcon from "@material-ui/icons/CheckRounded";
 import HelpOutlineIcon from "@material-ui/icons/HelpOutline";
 import { NavLink } from "react-router-dom";
+
+const useStyles = makeStyles((theme) => ({
+  modal: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    margin: 15,
+  },
+  paper: {
+    backgroundColor: theme.palette.background.paper,
+    border: "2px solid #000",
+    boxShadow: theme.shadows[5],
+    padding: theme.spacing(2, 4, 3),
+    borderRadius: 5,
+    textAlign: "center",
+    width: 500,
+  },
+}));
+
 export default function HeaderHome() {
-  const user = JSON.parse(localStorage.getItem("user"));
+  console.log("render");
   // eslint-disable-next-line
   const [render, setRender] = useState(false);
 
-  const useStyles = makeStyles((theme) => ({
-    modal: {
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      margin: 15,
-    },
-    paper: {
-      backgroundColor: theme.palette.background.paper,
-      border: "2px solid #000",
-      boxShadow: theme.shadows[5],
-      padding: theme.spacing(2, 4, 3),
-      borderRadius: 5,
-      textAlign: "center",
-      width: 500,
-    },
-  }));
-
+  const user = JSON.parse(localStorage.getItem("user"));
+  console.log(user);
   const classes = useStyles();
   const [openLogout, setOpenLogout] = React.useState(false);
 
@@ -72,7 +75,7 @@ export default function HeaderHome() {
           </NavLink>
           <li className="nav-item">
             <div className="nav-link d-flex">
-              {/* show UI when log out */}
+              {/* thong bao Modal kiem tra co dang xuat khong */}
               <Fragment>
                 <Button
                   type="button"
@@ -95,21 +98,23 @@ export default function HeaderHome() {
                 >
                   <Fade in={openCheckout}>
                     <div className={classes.paper}>
+                      {/* <h5>Bạn có chắc chắn muốn đăng xuất ?</h5> */}
                       <HelpOutlineIcon
                         style={{
                           color: "rgb(165 194 187)",
                           fontSize: 100,
-                          margin: "20px 0",
+                          margin: "10px auto",
+                          display: "block",
                         }}
                       />
-                      <h2
+                      <h5
                         style={{
                           fontWeight: 600,
                           marginBottom: 20,
                         }}
                       >
                         Bạn có chắc chắn muốn đăng xuất ?
-                      </h2>
+                      </h5>
 
                       <Button
                         className="logout mr-4"
@@ -132,7 +137,7 @@ export default function HeaderHome() {
                 </Modal>
               </Fragment>
 
-              {/* thong bao modal cam on vi su dung TIX */}
+              {/* show modal UI when log out */}
               <Fragment>
                 <Modal
                   aria-labelledby="transition-modal-title"
@@ -200,13 +205,13 @@ export default function HeaderHome() {
       return (
         <Fragment>
           <li className="nav-item border-right">
-            <NavLink className="nav-link d-flex" to={"/login"}>
+            <NavLink className="nav-link d-flex" exact to={"/login"}>
               <i className="fa fa-user-circle user-icon" />
               <span className="mt-1 ml-1 px-1">Đăng Nhập</span>
             </NavLink>
           </li>
           <li className="nav-item">
-            <NavLink className="nav-link d-flex" to="/register">
+            <NavLink className="nav-link d-flex" exact to="/register">
               <span className="mt-1 ml-1 px-1">Đăng Ký</span>
             </NavLink>
           </li>
@@ -218,12 +223,13 @@ export default function HeaderHome() {
   return (
     <header id="header" className="header">
       <nav className="navbar navbar-expand-md navbar-light bg-light">
-        <Link
+        <NavLink
           className="navbar-brand ml-3 col-5 col-md-2 col-lg-3 col-xl-4"
+          exact
           to="/"
         >
           <img src="/images/logo.png" target="logo" alt="logo" />
-        </Link>
+        </NavLink>
         <button
           className="navbar-toggler col-1 mr-3"
           type="button"
@@ -241,24 +247,24 @@ export default function HeaderHome() {
         >
           <ul className="navbar-nav item-left col-md-7">
             <li className="nav-item">
-              <Link className="nav-link" to="/#intro-film">
+              <NavLink className="nav-link" to="/#intro-film">
                 Lịch Chiếu
-              </Link>
+              </NavLink>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/#schedule">
+              <NavLink className="nav-link" to="/#schedule">
                 Cụm rạp
-              </Link>
+              </NavLink>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/#news">
+              <NavLink className="nav-link" to="/#news">
                 Tin tức
-              </Link>
+              </NavLink>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/#application">
+              <NavLink className="nav-link" to="/#application">
                 Ứng dụng
-              </Link>
+              </NavLink>
             </li>
           </ul>
           <ul
