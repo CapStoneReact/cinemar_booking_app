@@ -5,13 +5,11 @@ import HomeTemplate from './Templates/HomeTemplate';
 import LoadingPage from './Components/LoadingPage/LoadingPage';
 
 const HomePage = lazy(() => import('./Pages/Homepgae/Homepage.jsx'))
-// const Contact = lazy(() => import('./Pages/Contact/Contact'))
 const Login = lazy(() => import('./Pages/Login/Login'));
-// const About = lazy(() => import('./Pages/About/About'));
 
 
 // const GlobalStyle = lazy(() => import('./GlobalStyle'));
-// const Register = lazy(() => import('Pages/Register/Register'));
+const Register = lazy(() => import('./Pages/Register/Register'));
 // const Checkout = lazy(() => import('Pages/Checkout/Checkout'));
 // const ProtectedRoute = lazy(() => import('Routes/ProtectedRoute'));
 // const AddMovie = lazy(() => import('Pages/AddMovie/AddMovie'));
@@ -25,7 +23,7 @@ function App() {
           <Route path='' element={<HomeTemplate />}>
             {/* <Route path='contact' element={<Contact />}></Route> */}
             <Route path='login' element={<Login />}></Route>
-            {/* <Route path='Register' element={<Register />}></Route> */}
+            <Route path='Register' element={<Register />}></Route>
             {/* <Route path='about' element={<About />}></Route> */}
             {/* <Route path='checkout' element={
                 <ProtectedRoute>

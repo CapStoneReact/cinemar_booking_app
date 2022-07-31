@@ -10,7 +10,7 @@ import CheckRoundedIcon from "@material-ui/icons/CheckRounded";
 import HelpOutlineIcon from "@material-ui/icons/HelpOutline";
 import { NavLink } from "react-router-dom";
 export default function HeaderHome() {
-  const user = JSON.parse(localStorage.getItem("User"));
+  const user = JSON.parse(localStorage.getItem("user"));
   // eslint-disable-next-line
   const [render, setRender] = useState(false);
 
@@ -72,7 +72,7 @@ export default function HeaderHome() {
           </NavLink>
           <li className="nav-item">
             <div className="nav-link d-flex">
-              {/* thong bao Modal kiem tra co dang xuat khong */}
+              {/* show UI when log out */}
               <Fragment>
                 <Button
                   type="button"
@@ -200,7 +200,7 @@ export default function HeaderHome() {
       return (
         <Fragment>
           <li className="nav-item border-right">
-            <NavLink className="nav-link d-flex" to={"login"}>
+            <NavLink className="nav-link d-flex" to={"/login"}>
               <i className="fa fa-user-circle user-icon" />
               <span className="mt-1 ml-1 px-1">Đăng Nhập</span>
             </NavLink>
