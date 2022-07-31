@@ -98,7 +98,6 @@ export default function HeaderHome() {
                 >
                   <Fade in={openCheckout}>
                     <div className={classes.paper}>
-                      {/* <h5>Bạn có chắc chắn muốn đăng xuất ?</h5> */}
                       <HelpOutlineIcon
                         style={{
                           color: "rgb(165 194 187)",
@@ -162,14 +161,14 @@ export default function HeaderHome() {
                           borderRadius: "50%",
                         }}
                       />
-                      <h2
+                      <h5
                         style={{
                           fontWeight: 600,
                           marginBottom: 15,
                         }}
                       >
                         Đã đăng xuất
-                      </h2>
+                      </h5>
                       <p
                         style={{
                           fontSize: 20,
@@ -205,13 +204,13 @@ export default function HeaderHome() {
       return (
         <Fragment>
           <li className="nav-item border-right">
-            <NavLink className="nav-link d-flex" exact to={"/login"}>
+            <NavLink className="nav-link d-flex" to={"/login"}>
               <i className="fa fa-user-circle user-icon" />
               <span className="mt-1 ml-1 px-1">Đăng Nhập</span>
             </NavLink>
           </li>
           <li className="nav-item">
-            <NavLink className="nav-link d-flex" exact to="/register">
+            <NavLink className="nav-link d-flex" to="/register">
               <span className="mt-1 ml-1 px-1">Đăng Ký</span>
             </NavLink>
           </li>
@@ -225,7 +224,6 @@ export default function HeaderHome() {
       <nav className="navbar navbar-expand-md navbar-light bg-light">
         <NavLink
           className="navbar-brand ml-3 col-5 col-md-2 col-lg-3 col-xl-4"
-          exact
           to="/"
         >
           <img src="/images/logo.png" target="logo" alt="logo" />
@@ -247,24 +245,24 @@ export default function HeaderHome() {
         >
           <ul className="navbar-nav item-left col-md-7">
             <li className="nav-item">
-              <NavLink className="nav-link" to="/#intro-film">
+              <Link className="nav-link" to="/#intro-film">
                 Lịch Chiếu
-              </NavLink>
+              </Link>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to="/#schedule">
+              <Link className="nav-link" to="/#schedule">
                 Cụm rạp
-              </NavLink>
+              </Link>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to="/#news">
+              <Link className="nav-link" to="/#news">
                 Tin tức
-              </NavLink>
+              </Link>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to="/#application">
+              <Link className="nav-link" to="/#application">
                 Ứng dụng
-              </NavLink>
+              </Link>
             </li>
           </ul>
           <ul
