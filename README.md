@@ -7,9 +7,9 @@ Dự án được xây dựng từ React library.
 
 Dự án có tham khảo luồng và giao diện của trang [TixMovie](https://tcdtist-tix-clone.vercel.app/).
 
-### Mô tả dự án
+### Mô tả dự án và thông tin nội dung thành viên thực hiện:
 
-Khách hàng có thể:
+Khách hàng có thể: (Nguyễn Trọng Kha (all))
 
 - Đăng kí , đăng nhập
 - Xem những bộ phim có suất chiếu theo ngày hiện tại và những ngày tiếp theo
@@ -19,7 +19,7 @@ Khách hàng có thể:
 - Đặt ghế xem phim, đặt đồ ăn, thanh toán
 - Xem thông tin người dùng, đặt vé và thay đổi thông tin người dùng
 
-Người quản trị có thể:
+Người quản trị có thể: (Minh Duy)
 
 - Quản lý (thêm, xóa, cập nhật) thông tin lịch chiếu phim
 - Quản lý (thêm, xóa, cập nhật) thông tin chi tiết của phim
@@ -28,6 +28,10 @@ Người quản trị có thể:
 ### Links
 
 ### Các công nghệ sử dụng
+
+-ReactJS
+-Material UI
+-@Redux/Toolkit
 
 ## Author
 
