@@ -5,12 +5,15 @@ const movieAPI = {
         return axiosClient.get(`QuanLyPhim/LayDanhSachPhim?maNhom=${groupName}`);
     },
     getMovieDetails: (movieId) => {
-        return axiosClient.get("QuanLyPhim/LayThongTinPhim"),
-        {
-            params: {
-                maPhim: movieId,
-            },
-        }
+        return axiosClient.get("QuanLyPhim/LayThongTinPhim",
+            {
+                params: {
+                    maPhim: movieId,
+                },
+            })
+    },
+    fetchShowtime: (id) => {
+        return axiosClient.get(`QuanLyRap/LayThongTinLichChieuPhim?MaPhim=${id}`);
     },
     addMovie: (movie) => {
         const formData = new FormData();

@@ -9,7 +9,8 @@ import Fade from "@material-ui/core/Fade";
 import HighlightOffOutlinedIcon from "@material-ui/icons/HighlightOffOutlined";
 import Button from "@material-ui/core/Button";
 // import FilmSelection from "../FilmSelection";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
+import FilmSelection from "../FilmSelection/FilmSelection";
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -39,7 +40,6 @@ export default function MovieShowing() {
   };
 
   const { movies } = useSelector((state) => state.movie);
-  console.log(movies);
   // create array[][] to save 8 films into 1 slider
   let filmList;
   if (movies && movies.length > 0) {
@@ -324,7 +324,7 @@ export default function MovieShowing() {
   // render Intro-Film
   return (
     <section id="intro-film" className="intro-film">
-      {/* <FilmSelection filmList={movies} /> */}
+      <FilmSelection filmList={movies} />
 
       <div className="list-film">
         <ul className="nav nav-tabs" id="myTab" role="tablist">
