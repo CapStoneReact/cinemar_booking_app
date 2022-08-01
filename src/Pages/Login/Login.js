@@ -14,6 +14,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
 import LoadingPage from "../../Components/LoadingPage/LoadingPage";
 import { loginAction, resetAuth } from "../../Slices/auth";
+import { useLocation } from "react-router-dom";
 
 function Copyright() {
     return (
@@ -66,6 +67,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Login(props) {
     let navigate = useNavigate();
+    const location = useLocation();
     const classes = useStyles();
     const [state, setState] = useState({
         taiKhoan: "",
@@ -151,6 +153,8 @@ export default function Login(props) {
     if (user) {
         if (user.maLoaiNguoiDung === "QuanTri") {
             navigate("/dashboard");
+        } else if (location?.state?.idSchedule) {
+            navigate(`/bookticket/${location?.state?.idSchedule}`);
         }
         else {
             navigate("/");

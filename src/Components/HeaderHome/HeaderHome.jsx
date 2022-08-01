@@ -223,6 +223,7 @@ export default function HeaderHome() {
         <NavLink
           className="navbar-brand ml-3 col-5 col-md-2 col-lg-3 col-xl-4"
           to="/"
+          exact
         >
           <img src="/images/logo.png" target="logo" alt="logo" />
         </NavLink>
