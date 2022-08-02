@@ -3,6 +3,7 @@ import ErrorBoundary from './Components/ErrorBoudary/ErrorBoudary';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import HomeTemplate from './Templates/HomeTemplate';
 import LoadingPage from './Components/LoadingPage/LoadingPage';
+import { useSelector } from 'react-redux';
 
 const HomePage = lazy(() => import('./Pages/Homepgae/Homepage.jsx'))
 const Login = lazy(() => import('./Pages/Login/Login'));
@@ -14,6 +15,7 @@ const Register = lazy(() => import('./Pages/Register/Register'));
 // const AddMovie = lazy(() => import('Pages/AddMovie/AddMovie'));
 
 function App() {
+  const { user } = useSelector((state) => state.auth);;
   return (
     <ErrorBoundary>
       <Suspense fallback={<LoadingPage />}>
@@ -21,8 +23,8 @@ function App() {
           <Routes>
             <Route path='' element={<HomeTemplate />}>
               {/* <Route path='contact' element={<Contact />}></Route> */}
-              <Route path='login' element={<Login />}></Route>
-              <Route path='Register' element={<Register />}></Route>
+              {user == null && <Route path='login' element={<Login />}></Route>}
+              {user == null && <Route path='Register' element={<Register />}></Route>}
               {/* <Route path='checkout' element={
                 <ProtectedRoute>
                   <Checkout />

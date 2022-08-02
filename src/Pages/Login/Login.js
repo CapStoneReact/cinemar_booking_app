@@ -97,14 +97,14 @@ export default function Login(props) {
             setIsDisable(false);
         }
     };
-    useEffect(() => {
-        setTimeout(handleReset, 2000);
-        setState({
-            taiKhoan: "",
-            matKhau: "",
-        });
-        // eslint-disable-next-line
-    }, [render]);
+    // useEffect(() => {
+    //     setTimeout(handleReset, 2000);
+    //     setState({
+    //         taiKhoan: "",
+    //         matKhau: "",
+    //     });
+    //     // eslint-disable-next-line
+    // }, [render]);
     const handleNotice = () => {
         setEmptyUsernameNotice(false);
         setEmptyPasswordNotice(false);
@@ -127,9 +127,9 @@ export default function Login(props) {
             setIsDisable(true);
         }
     };
-    const handleReset = () => {
-        dispatch(resetAuth());
-    };
+    // const handleReset = () => {
+    //     dispatch(resetAuth());
+    // };
     const renderNotice = () => {
         if (error) {
             return <Alert severity="error">{error.message}</Alert>;
@@ -157,6 +157,7 @@ export default function Login(props) {
             navigate(`/bookticket/${location?.state?.idSchedule}`);
         }
         else {
+            console.log("Login")
             navigate("/");
         }
     }
