@@ -5,6 +5,7 @@ import showfilm from './Slices/showfilm';
 import registerAuth from './Slices/registerAuth';
 import userInfor from './Slices/userInfor';
 import userAuth from './Slices/userAuth';
+import newsReducer from './Pages/News/reducer';
 
 const store = configureStore({
     reducer: {
@@ -14,6 +15,8 @@ const store = configureStore({
         registerAuth,
         userInfor,
         userAuth,
+        newsReducer,
+
 
     },
 })
