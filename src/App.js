@@ -4,6 +4,7 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import HomeTemplate from './Templates/HomeTemplate';
 import LoadingPage from './Components/LoadingPage/LoadingPage';
 import { useSelector } from 'react-redux';
+import UserInfor from './Pages/UserInfor/UserInfor';
 
 const HomePage = lazy(() => import('./Pages/Homepgae/Homepage.jsx'))
 const Login = lazy(() => import('./Pages/Login/Login'));
@@ -25,6 +26,7 @@ function App() {
               {/* <Route path='contact' element={<Contact />}></Route> */}
               {user == null && <Route path='login' element={<Login />}></Route>}
               {user == null && <Route path='Register' element={<Register />}></Route>}
+              {user != null && <Route path='account-info/:taiKhoan' element={<UserInfor />}></Route>}
               {/* <Route path='checkout' element={
                 <ProtectedRoute>
                   <Checkout />

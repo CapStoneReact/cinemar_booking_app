@@ -1,4 +1,5 @@
 import axios from "axios";
+import store from "../configStore";
 // import store from "../configStore";
 
 const axiosClient = axios.create({
@@ -12,6 +13,12 @@ const axiosClient = axios.create({
 // Add a request interceptor
 axiosClient.interceptors.request.use(function (config) {
     // Do something before request is sent
+    if (config.headers) {
+        const { accessToken = "" } = store.getState().auth.user || {}
+        if (accessToken) {
+            config.headers.Authorization = `Bearer ${accessToken}`
+        }
+    }
     return config;
 }, function (error) {
     // Do something with request error
