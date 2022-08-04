@@ -1,0 +1,36 @@
+.container {
+  display: flex;
+
+  width: 960px;
+  height: 720px;
+  margin: 50px auto;
+  border: 1px solid #e0e0e0;
+
+  .groupCol {
+    width: 10%;
+  }
+  .theaterCol {
+    width: 30%;
+  }
+  .movieCol {
+    width: 60%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+
+  .col {
+    position: relative;
+    border: 0.5px solid #7575753f;
+    span {
+      position: absolute;
+      top: 0;
+      right: -1px;
+
+      width: 3px;
+      height: 90px;
+      background-color: #00ac4d;
+
+      transition: 1s;
+    }
+  }
+}
