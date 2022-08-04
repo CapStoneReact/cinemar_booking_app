@@ -30,6 +30,7 @@ function App() {
               {/* <Route path='movies/add' element={<AddMovie />}></Route> */}
               <Route index element={<HomePage />}></Route>
               <Route path="*" element={<Navigate to={""} />}></Route>
+              <Route path="detail/:movieID"></Route>
             </Route>
           </Routes>
         </BrowserRouter>

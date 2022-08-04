@@ -14,7 +14,7 @@ const Theater = ({ name, address, theaterID }) => {
     >
       <h4 className={style.text}>{name}</h4>
       <h6 className={style.text}>{address}</h6>
-      <a href="#">[chi tiết] </a>
+      <a style={{ color: "red" }}>[chi tiết] </a>
     </div>
   );
 };
