@@ -7,6 +7,17 @@ const authAPI = {
     registerAcion: (data) => {
         return axiosClient.post("/QuanLyNguoiDung/DangKy", data)
     },
+    getInfor: (data) => {
+        return axiosClient.post("/QuanLyNguoiDung/ThongTinTaiKhoan", data)
+    },
+    fetchUserList: (group) => {
+        return axiosClient.get(`/QuanLyNguoiDung/LayDanhSachNguoiDung?MaNhom=${group}`)
+    },
+    updateUser: (data, group, dispatch) => {
+        return axiosClient.put("/QuanLyNguoiDung/CapNhatThongTinNguoiDung",
+            data
+        )
+    },
     addMovie: (movie) => {
         const formData = new FormData();
         for (let key in movie) {

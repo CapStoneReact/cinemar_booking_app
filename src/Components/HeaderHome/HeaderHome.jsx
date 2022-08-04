@@ -9,6 +9,8 @@ import Fade from "@material-ui/core/Fade";
 import CheckRoundedIcon from "@material-ui/icons/CheckRounded";
 import HelpOutlineIcon from "@material-ui/icons/HelpOutline";
 import { NavLink } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { resetAuth } from "../../Slices/auth";
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -32,7 +34,9 @@ export default function HeaderHome() {
   // eslint-disable-next-line
   const [render, setRender] = useState(false);
 
-  const user = JSON.parse(localStorage.getItem("user"));
+  // const user = JSON.parse(localStorage.getItem("user"));
+  const { user } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
   const classes = useStyles();
   const [openLogout, setOpenLogout] = React.useState(false);
 
@@ -185,6 +189,7 @@ export default function HeaderHome() {
                           onClick={() => {
                             setRender(true);
                             localStorage.clear();
+                            dispatch(resetAuth());
                           }}
                         >
                           OK

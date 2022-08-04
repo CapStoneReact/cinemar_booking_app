@@ -9,7 +9,7 @@ Dự án có tham khảo luồng và giao diện của trang [TixMovie](https://
 
 ### Mô tả dự án và thông tin nội dung thành viên thực hiện:
 
-Khách hàng có thể: (Nguyễn Trọng Kha (all))
+Khách hàng có thể: (Nguyễn Trọng Kha + Nguyễn Đức Quang)
 
 - Đăng kí , đăng nhập
 - Xem những bộ phim có suất chiếu theo ngày hiện tại và những ngày tiếp theo

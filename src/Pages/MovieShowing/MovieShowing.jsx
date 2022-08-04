@@ -11,6 +11,7 @@ import Button from "@material-ui/core/Button";
 // import FilmSelection from "../FilmSelection";
 import { Link } from "react-router-dom";
 import FilmSelection from "../FilmSelection/FilmSelection";
+import { NavLink } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -207,8 +208,8 @@ export default function MovieShowing() {
                   className="background_hidden"
                   style={{ display: "block" }}
                 />
-                <button className="btn">
-                  {/* <NavLink
+                <button className="btn" onClick={() => console.log(film)}>
+                  <NavLink
                     to={{
                       pathname: "/film-detail/" + film.maPhim,
                       state: {
@@ -221,9 +222,9 @@ export default function MovieShowing() {
                     style={{
                       textDecoration: "none",
                     }}
-                  > */}
-                  MUA VÉ
-                  {/* </NavLink> */}
+                  >
+                    MUA VÉ
+                  </NavLink>
                 </button>
               </div>
             </div>

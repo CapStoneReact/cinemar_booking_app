@@ -14,7 +14,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Alert } from "@material-ui/lab";
 import "./style.css";
 import LoadingPage from "../../Components/LoadingPage/LoadingPage";
-import { registerAction, resetAuth } from "../../Slices/auth";
+import { registerAction, resetRegisterAuth } from "../../Slices/registerAuth";
 function Copyright() {
     return (
         <Typography variant="body2" color="textSecondary" align="center">
@@ -67,7 +67,7 @@ export default function Register() {
     let navigate = useNavigate();
     const classes = useStyles();
     const dispatch = useDispatch();
-    const { user, isLoading, error } = useSelector(state => state.auth)
+    const { user, isLoading, error } = useSelector(state => state.registerAuth)
     const logo = process.env.PUBLIC_URL + "/images/logo.png";
     const [isValidPhoneNumber, setIsValidPhoneNumber] = useState(false);
     const [isDisable, setIsDisable] = useState(true);
@@ -94,7 +94,7 @@ export default function Register() {
         setEmptyFullNameNotice(false);
     };
     const handleResetReducer = () => {
-        dispatch(resetAuth());
+        dispatch(resetRegisterAuth());
     };
     const handleChangeRegister = (e) => {
         const name = e.target.name;
