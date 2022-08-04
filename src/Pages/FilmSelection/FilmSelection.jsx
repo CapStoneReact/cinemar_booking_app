@@ -20,7 +20,6 @@ export default function FilmSelection(props) {
   }, [valueFilm]);
 
   const { movie } = useSelector((state) => state.showfilm);
-  console.log(movie);
 
   // Film Select Option
   let optionFilms = [];

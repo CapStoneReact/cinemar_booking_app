@@ -6,6 +6,8 @@ import registerAuth from './Slices/registerAuth';
 import userInfor from './Slices/userInfor';
 import userAuth from './Slices/userAuth';
 import newsReducer from './Pages/News/reducer';
+import roomList from './Slices/roomList';
+import bookTicket from './Slices/bookTicket';
 
 const store = configureStore({
     reducer: {
@@ -16,7 +18,8 @@ const store = configureStore({
         userInfor,
         userAuth,
         newsReducer,
-
+        roomList,
+        bookTicket,
 
     },
 })
