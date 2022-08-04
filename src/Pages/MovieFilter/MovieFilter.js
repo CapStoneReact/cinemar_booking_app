@@ -1,3 +1,4 @@
+/*eslint-disable*/
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import style from "./MovieFilter.module.scss";
@@ -72,7 +73,7 @@ const MovieFilter = () => {
   }, [selectedTheater]);
 
   return (
-    <div className={style.container}>
+    <div className={style.container} id="schedule">
       <div className={cn(style.groupCol, style.col)}>
         {listGroup.map((item) => (
           <Logo

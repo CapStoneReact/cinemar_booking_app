@@ -249,7 +249,11 @@ export default function BookingTicket(props) {
           <div className="info mb-2">
             <div className="cinema">
               <div className="py-2 pr-2">
-                <img src={room?.thongTinPhim.hinhAnh} alt="" />
+                <img
+                  src={room?.thongTinPhim.hinhAnh}
+                  style={{ width: 200, height: 200, borderRadius: 10 }}
+                  alt=""
+                />
               </div>
               <div className="res-none">
                 <p style={{ marginBottom: 5, color: "#000000" }}>

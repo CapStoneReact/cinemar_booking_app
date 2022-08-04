@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import classNames from "classnames";
-import { Button } from "@material-ui/core";
 
 export default function Seat(props) {
   const { seat, addToBookSeats, removeFromBookSeats } = props;

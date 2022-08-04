@@ -10,9 +10,9 @@ const HomePage = () => {
     <div>
       <SlideBar />
       <MovieShowing />
+      <MovieFilter />
       <News />
       <Application />
-      <MovieFilter />
       <FooterHome />
     </div>
   );

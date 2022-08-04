@@ -127,14 +127,14 @@ export default function Payment(props) {
                   borderRadius: "50%",
                 }}
               />
-              <h2
+              <h5
                 style={{
                   fontWeight: 600,
                   marginBottom: 15,
                 }}
               >
                 Thông tin đặt vé sẽ được gửi qua email
-              </h2>
+              </h5>
               <p
                 style={{
                   fontSize: 20,
@@ -204,14 +204,14 @@ export default function Payment(props) {
                   borderRadius: "50%",
                 }}
               />
-              <h2
+              <h5
                 style={{
                   fontWeight: 600,
                   marginBottom: 20,
                 }}
               >
                 Đặt vé thành công
-              </h2>
+              </h5>
 
               <Link to="/">
                 <Button

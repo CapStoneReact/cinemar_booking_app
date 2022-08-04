@@ -8,7 +8,7 @@ import { fetchShowtimeFilm, setShowTimeReset } from "../../Slices/showfilm";
 
 export default function FilmSelection(props) {
   const [valueFilm, setValueFilm] = useState(null); // lay phim user chon
-
+  const { user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   useEffect(() => {
     if (valueFilm) {
@@ -151,8 +151,8 @@ export default function FilmSelection(props) {
     []
   );
   const handleBookSeatButton = () => {
-    const user = JSON.parse(localStorage.getItem("User"));
-    if (user) {
+    console.log(user);
+    if (user != null) {
       return (
         <Button
           variant="contained"
@@ -162,12 +162,7 @@ export default function FilmSelection(props) {
         >
           <Link
             style={{ textDecoration: "none", color: "white" }}
-            to={{
-              pathname: "/bookticket/" + valueShowtime?.idSchedule,
-              state: {
-                idSchedule: valueShowtime?.idSchedule,
-              },
-            }}
+            to={"/bookticket/40253"}
           >
             MUA VÉ
           </Link>
@@ -181,15 +176,7 @@ export default function FilmSelection(props) {
         color="secondary"
         disabled={disabled}
       >
-        <Link
-          style={{ textDecoration: "none", color: "white" }}
-          to={{
-            pathname: "/login",
-            state: {
-              idSchedule: valueShowtime?.idSchedule,
-            },
-          }}
-        >
+        <Link style={{ textDecoration: "none", color: "white" }} to={"/login"}>
           MUA VÉ
         </Link>
       </Button>

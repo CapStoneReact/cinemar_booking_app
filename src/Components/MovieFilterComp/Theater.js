@@ -1,3 +1,4 @@
+/*eslint-disable*/
 import React from "react";
 import style from "./Theater.module.scss";
 import { useDispatch } from "react-redux";

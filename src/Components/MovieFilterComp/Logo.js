@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import style from "./Logo.module.scss";
-import { changeGroup, changeTheater } from "../../Slices/filter";
+import { changeGroup } from "../../Slices/filter";
 
 const Logo = ({ img, groupID }) => {
   const dispatch = useDispatch();
