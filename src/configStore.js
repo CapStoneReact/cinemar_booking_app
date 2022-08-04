@@ -1,3 +1,4 @@
+import filter from "./Slices/filter";
 import { configureStore } from '@reduxjs/toolkit'
 import movie from './Slices/movie';
 import auth from './Slices/auth';
@@ -20,6 +21,7 @@ const store = configureStore({
         newsReducer,
         roomList,
         bookTicket,
+        filter,
 
     },
 })
