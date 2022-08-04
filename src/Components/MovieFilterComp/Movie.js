@@ -7,7 +7,6 @@ import Showtime from "./Showtime";
 const Movie = ({ name, img, showtime }) => {
   const navigate = useNavigate()
   const { user } = useSelector(state => state.auth)
-  console.log(user)
   const handleClick = (id) => {
     if (user != null) {
       navigate(`bookticket/${id}`)

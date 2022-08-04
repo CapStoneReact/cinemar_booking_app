@@ -27,6 +27,10 @@ Người quản trị có thể: (Minh Duy)
 
 ### Links
 
+- Githu: [https://github.com/CapStoneReact/cinemar_booking_app](https://github.com/CapStoneReact/cinemar_booking_app)
+- Demo: [https://www.youtube.com/watch?v=tNHJJ7DhyEQ](https://www.youtube.com/watch?v=tNHJJ7DhyEQ)
+- Deloy: [https://cinemar-booking-app.vercel.app/](https://cinemar-booking-app.vercel.app/)
+
 ### Các công nghệ sử dụng
 
 -ReactJS
